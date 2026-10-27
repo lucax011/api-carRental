@@ -1,10 +1,10 @@
 {
-  "name": "nova-pasta",
+  "name": "api-car-rental",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API REST do Urban Drive: carros, usuários e aluguéis",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
