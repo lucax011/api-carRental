@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Configura o body-parser
 app.use(bodyParser.json());
@@ -12,10 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configura a conexão com o banco de dados
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'car_rental'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'car_rental'
 });
 
 // Conecta ao banco de dados
@@ -129,6 +129,6 @@ app.post('/api/rentals/details', (req, res) => {
 
     // Inicia o servidor após garantir que a conexão está estabelecida
     app.listen(port, () => {
-        console.log(`Servidor rodando em http://10.0.2.2:${port}`);
+        console.log(`Servidor rodando na porta ${port} (no emulador Android: http://10.0.2.2:${port})`);
     });
 });
